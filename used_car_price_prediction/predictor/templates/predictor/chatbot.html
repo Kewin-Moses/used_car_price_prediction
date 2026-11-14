@@ -1,0 +1,19 @@
+{% extends "predictor/base.html" %}
+{% block title %}Car Assistant | AutoValue{% endblock %}
+{% block content %}
+<div class="row justify-content-center"><div class="col-lg-8">
+<div class="card shadow-sm"><div class="card-body p-4">
+<h1 class="h3">Car knowledge assistant</h1>
+<p class="text-secondary">Ask questions about the dataset, project or price-prediction process.</p>
+<form method="post">
+{% csrf_token %}
+<label class="form-label" for="question">Your question</label>
+<textarea class="form-control mb-3" id="question" name="question" rows="3" required>{{ question }}</textarea>
+<button class="btn btn-primary">Ask assistant</button>
+</form>
+{% if answer %}
+<hr><h5>Answer</h5><div class="answer-box">{{ answer|linebreaksbr }}</div>
+{% endif %}
+<div class="alert alert-info mt-4 mb-0 small">This is a basic RAG demonstration: it retrieves relevant passages from the local knowledge base and sends them to Ollama. It requires Ollama running locally with the configured model.</div>
+</div></div></div></div>
+{% endblock %}

@@ -1,0 +1,7 @@
+.venv/
+__pycache__/
+*.py[cod]
+db.sqlite3
+model_artifacts/*.joblib
+model_artifacts/metrics.json
+.env

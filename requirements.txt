@@ -1,0 +1,6 @@
+requests
+django
+reportlab
+scikit-learn
+pandas
+numpy

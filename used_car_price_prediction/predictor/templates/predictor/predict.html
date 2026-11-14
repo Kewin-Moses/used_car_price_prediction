@@ -1,0 +1,33 @@
+{% extends "predictor/base.html" %}
+{% block title %}Predict price | AutoValue{% endblock %}
+{% block content %}
+<div class="row justify-content-center">
+<div class="col-lg-8">
+<div class="card shadow-sm"><div class="card-body p-4">
+<h1 class="h3">Enter car details</h1>
+<p class="text-secondary">Enter all details to estimate the resale price. Prices are in Indian rupees lakhs.</p>
+<form method="post">
+{% csrf_token %}
+<div class="row">
+{% for field in form %}
+<div class="col-md-6 mb-3">
+<label class="form-label">{{ field.label }}</label>
+{{ field }}
+{% for error in field.errors %}<div class="small text-danger">{{ error }}</div>{% endfor %}
+</div>
+{% endfor %}
+</div>
+<button class="btn btn-primary w-100">Predict selling price</button>
+</form>
+{% if prediction %}
+<div class="prediction-result mt-4 p-4 text-center">
+<div class="text-secondary">Estimated selling price</div>
+<div class="display-5 fw-bold text-success">₹{{ prediction.predicted_price|floatformat:2 }} lakh</div>
+<p class="text-secondary mb-3">Prediction saved to your history.</p>
+<a class="btn btn-success" href="{% url 'download_report' prediction.id %}">Download PDF report</a>
+<a class="btn btn-outline-secondary" href="{% url 'predict' %}">New prediction</a>
+</div>
+{% endif %}
+</div></div>
+</div></div>
+{% endblock %}

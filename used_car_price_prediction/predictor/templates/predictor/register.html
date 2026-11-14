@@ -1,0 +1,23 @@
+{% extends "predictor/base.html" %}
+{% block title %}Register | AutoValue{% endblock %}
+{% block content %}
+<div class="auth-card card shadow-sm mx-auto">
+    <div class="card-body p-4">
+        <h2 class="mb-1">Create account</h2>
+        <p class="text-secondary mb-4">Register to estimate used-car prices.</p>
+        <form method="post">
+            {% csrf_token %}
+            {% for field in form %}
+            <div class="mb-3">
+                <label class="form-label">{{ field.label }}</label>
+                {{ field }}
+                {% for error in field.errors %}<div class="text-danger small">{{ error }}</div>{% endfor %}
+                {% if field.help_text %}<div class="form-text">{{ field.help_text|safe }}</div>{% endif %}
+            </div>
+            {% endfor %}
+            <button class="btn btn-primary w-100">Register</button>
+        </form>
+        <p class="mt-3 mb-0 text-center">Already have an account? <a href="{% url 'login' %}">Login</a></p>
+    </div>
+</div>
+{% endblock %}

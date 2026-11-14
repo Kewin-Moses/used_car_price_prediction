@@ -1,0 +1,17 @@
+{% extends "predictor/base.html" %}
+{% block title %}History | AutoValue{% endblock %}
+{% block content %}
+<h1 class="h2 mb-4">Your prediction history</h1>
+<div class="card shadow-sm"><div class="card-body">
+<div class="table-responsive"><table class="table table-hover align-middle">
+<thead><tr><th>Car</th><th>Year</th><th>Fuel</th><th>Driven kms</th><th>Predicted price</th><th>Date</th><th>Report</th></tr></thead>
+<tbody>
+{% for item in predictions %}
+<tr>
+<td>{{ item.car_name|title }}</td><td>{{ item.year }}</td><td>{{ item.fuel_type }}</td><td>{{ item.driven_kms }}</td>
+<td>₹{{ item.predicted_price|floatformat:2 }} lakh</td><td>{{ item.created_at|date:"d M Y" }}</td>
+<td><a href="{% url 'download_report' item.id %}" class="btn btn-sm btn-outline-success">PDF</a></td>
+</tr>
+{% empty %}<tr><td colspan="7" class="text-center text-secondary py-4">No prediction history found.</td></tr>{% endfor %}
+</tbody></table></div></div></div>
+{% endblock %}

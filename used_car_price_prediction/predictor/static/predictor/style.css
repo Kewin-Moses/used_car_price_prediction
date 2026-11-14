@@ -1,0 +1,7 @@
+body { background: #f5f7fb; color: #1f2937; }
+.auth-card { max-width: 480px; margin-top: 3rem; }
+.stat-card { background: white; border: 1px solid #e8ebf1; border-radius: 14px; padding: 1.3rem; height: 100%; }
+.card { border: 1px solid #e8ebf1; border-radius: 14px; }
+.prediction-result { background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 12px; }
+.answer-box { background: #f8fafc; padding: 1rem; border-radius: 10px; white-space: normal; }
+.form-control { min-height: 42px; }

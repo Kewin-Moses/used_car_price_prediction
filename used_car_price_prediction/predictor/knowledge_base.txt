@@ -1,0 +1,13 @@
+The used car dataset contains 301 rows and 9 columns: Car_Name, Year, Selling_Price, Present_Price, Driven_kms, Fuel_Type, Selling_type, Transmission, and Owner.
+
+Selling_Price is the target variable. It is the value the machine learning model attempts to predict. The other eight columns are input features.
+
+Present_Price represents the present price of the car in the dataset. Selling_Price and Present_Price are expressed in lakh rupees in the source dataset.
+
+Year is the car's manufacturing year. Driven_kms is the number of kilometres driven. Fuel_Type has Petrol, Diesel, and CNG categories. Selling_type indicates Dealer or Individual. Transmission indicates Manual or Automatic. Owner indicates the number of previous owners.
+
+The project trains Linear Regression and Random Forest Regressor models. It compares them using MAE, RMSE, and R-squared. Lower MAE and RMSE are generally better. R-squared measures the proportion of target variation explained by the model; a value closer to 1 is generally better.
+
+OneHotEncoder converts categorical text values into numeric model features. SimpleImputer provides a fallback for missing feature values. The preprocessing steps and regression algorithm are saved together as a scikit-learn pipeline using Joblib.
+
+A prediction is an estimate based on patterns in a small historical dataset. It is not a guaranteed current market valuation. The dataset contains 301 records and manufacturing years up to 2018.
